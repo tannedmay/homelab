@@ -12,3 +12,6 @@ backup/
 *.sqlite
 *.db
 .DS_Store
+
+# Scribe (docs agent) inbox: private change digests, never committed
+.scribe/
