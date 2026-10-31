@@ -36,8 +36,8 @@ flowchart LR
 
 ## Two examples
 
-- **Update keeper.** A script inventories every pinned version across my repositories, looks up newer releases and release notes, and gives the agent only that. The agent chooses upgrade, pin, or hold among the offered versions. On approval, the bridge applies exactly the reviewed edits, commits, pushes, and redeploys NAS services one at a time with a health check.
-- **Docs writer.** This repository is maintained by an agent that reads a digest of what changed in my private repos and edits only `README.md`, `architecture/` and `docs/`. A write allowlist and an automated leak check gate any push, and it never pushes itself.
+- **Update keeper.** A script inventories every pinned version across my repositories, looks up newer releases and release notes, and gives the agent only that. The agent chooses upgrade, pin, or hold among the offered versions. On approval, the bridge applies exactly the reviewed edits, commits, pushes, and redeploys NAS services one at a time with a health check. If it can't confirm exactly which version a running service is on, it offers no change for that service rather than guessing from the registry's latest tag.
+- **Docs writer.** This repository is maintained by an agent that reads a digest of what changed in my private repos and edits only `README.md`, `architecture/` and `docs/`. A write allowlist and an automated leak check gate any push, and it never pushes itself. Only very public information belongs here, so when in doubt the agent leaves a detail out. The leak check covers file contents and commit messages, and blocks identifiers such as hostnames, addresses, ports, chat IDs and any domain not on a short list of public projects and vendors.
 
 ## Pinning and testing
 
