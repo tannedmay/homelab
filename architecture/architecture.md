@@ -28,3 +28,7 @@ Each service on Alex runs as its own independent Docker Compose stack rather tha
 - **Reduced blast radius on change** — pulling a new image or changing an environment variable for one service can't accidentally affect another.
 
 The tradeoff is a bit more repetition across stacks (shared patterns like reverse proxy labels or network config are duplicated rather than centralized). For a single-operator homelab, that repetition is worth the isolation.
+
+## Agents and messaging
+
+Alongside the services, I run a small agent platform (see [agents.md](../docs/agents.md)): unattended AI agents in hardened containers whose changes require my approval. A self-hosted Matrix server is the channel where they ask questions and report, and an MQTT broker carries device and event traffic. Agents never hold credentials; small bridge processes do, and apply only what I've reviewed.

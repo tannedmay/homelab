@@ -8,6 +8,18 @@ Services are reached over Tailscale, with a reverse proxy sitting in front of th
 
 Nothing is exposed publicly by default. Any public exposure is deliberate and scoped to a specific service with a specific reason, not a byproduct of default configuration.
 
+## Service binding
+
+Where a service sits behind the NAS's reverse proxy, its web port is published on loopback only, so it isn't reachable directly from the home LAN. Mail-bridge IMAP/SMTP follows the same rule: reachable over Tailscale, not the LAN.
+
+## Agents
+
+AI agents run in hardened containers with egress limited to the model API, no credentials, and approve-before-apply for every change. See [agents.md](agents.md).
+
+## Supply chain
+
+Container images and key tools are pinned (by digest where possible), and updates go through a reviewed approve-before-apply flow rather than rolling tags.
+
 ## Secrets
 
 Secrets — API tokens, credentials, keys — are intentionally excluded from Git. They're supplied separately at deployment/runtime, never committed alongside service configuration.

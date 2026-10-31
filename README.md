@@ -39,6 +39,7 @@ This repository is a portfolio, not a product — but the environment it documen
 - Local AI infrastructure (Ollama, AI-assisted development tooling) running on dedicated hardware
 - Persistent storage and a defined backup boundary for application data
 - Home automation running as a first-class self-hosted service, not a cloud dependency
+- Least-privilege automation: AI agents that propose changes in locked-down containers and ship only what I approve
 - Ongoing operational maintenance: updates, monitoring for breakage, and deliberate tradeoffs rather than defaults
 
 This is a personal environment where I apply production-style engineering discipline — not a claim that it *is* production infrastructure.
@@ -50,7 +51,9 @@ This is a personal environment where I apply production-style engineering discip
 | Containerization | Docker, Docker Compose, Portainer |
 | Networking / access | Tailscale, reverse proxy, Cloudflare (DNS) |
 | Local AI | Ollama, OpenClaw, Aider |
-| Self-hosted services | Paperless-ngx, Home Assistant, SearXNG |
+| Self-hosted services | Paperless-ngx, Home Assistant, SearXNG, Immich, Vaultwarden, Actual Budget, Proton Mail Bridge |
+| Messaging / events | Self-hosted Matrix server, MQTT broker |
+| Automation | Claude Code agents in hardened containers, approve-before-apply |
 | Version control | Git |
 
 Only technologies actually in use are listed here.
@@ -59,6 +62,7 @@ Only technologies actually in use are listed here.
 
 - [Architecture](architecture/architecture.md) — machine roles, why workloads are split, service design
 - [Deployment](docs/deployment.md) — how services get from Git to running containers
+- [Agent platform](docs/agents.md) — hardened unattended agents, approve-before-apply, Matrix as the review channel
 - [Security](docs/security.md) — remote access, exposure, secrets, network separation
 - [Backup & Recovery](docs/backup-recovery.md) — what's backed up, what isn't, and why
 
